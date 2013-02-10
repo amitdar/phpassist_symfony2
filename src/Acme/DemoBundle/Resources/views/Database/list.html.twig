@@ -1,0 +1,20 @@
+{% extends "AcmeDemoBundle::layout.html.twig" %}
+
+{% block title "Database" %}
+
+{% block content %}
+    <h1>{{ todos|length }} Todo items:</h1>
+    <li>
+        {% for todo in todos %}
+        <ul>{{ todo.title }}</ul>
+        {% else %}
+        <ul>nothing to do !</ul>
+        {% endfor %}
+    </li>
+    <form action="{{ path('database_create') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" value="Add">
+    </form>
+{% endblock %}
+
+{% set code = code(_self) %}
